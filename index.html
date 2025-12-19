@@ -259,54 +259,32 @@ footer a {
 }
 
 
-/* ===== 手机端：歌词上下结构 + 防溢出（稳定版） ===== */
 @media (max-width: 600px) {
-
-    /* 1️⃣ 布局：左右 → 上下 */
     .lyrics-wrapper {
+        flex-direction: column; /* 上下排列 */
+        gap: 20px;
+    }
+
+    .lyrics-list {
+        flex: 1 1 auto;
         display: flex;
-        flex-direction: column;
+        overflow-x: auto; /* 横向滚动目录 */
         gap: 16px;
     }
 
-    /* 2️⃣ 目录横向滚动，不挤歌词 */
-    .lyrics-list {
-        display: flex;
-        flex-direction: row;
-        gap: 14px;
-        overflow-x: auto;
-        overflow-y: hidden;
-        padding-bottom: 6px;
-        white-space: nowrap;
-    }
-
     .lyrics-list li {
-        flex-shrink: 0;
-        font-size: 0.8em;
+        flex: 0 0 auto; /* 每个条目自适应内容宽度 */
     }
 
-    /* 3️⃣ 歌词内容区：严格限制宽度 */
     .lyrics-content {
-        width: 100%;
-        min-width: 0;
-        overflow-x: hidden;
+        min-height: 150px;
     }
 
-    /* 4️⃣ 每一首歌词都不能超出 */
-    .lyric {
-        max-width: 100%;
-        overflow-wrap: break-word;
+    .lyrics-content p {
+        max-width: 100%; /* 手机全屏显示 */
         word-break: break-word;
     }
-
-    /* 5️⃣ 文字兜底（最关键） */
-    .lyric p {
-        max-width: 100%;
-        box-sizing: border-box;
-        white-space: normal;   /* 手机端取消 pre-line */
-    }
 }
-
 
     
 </style>
@@ -449,6 +427,7 @@ fetch(`lyrics.json?t=${Date.now()}`)
 
 </body>
 </html>
+
 
 
 
