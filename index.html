@@ -40,11 +40,7 @@ header::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-        to bottom,
-        rgba(20, 60, 30, 0.45),
-        rgba(20, 60, 30, 0.7)
-    );
+    background: linear-gradient(to bottom, rgba(20, 60, 30, 0.45), rgba(20, 60, 30, 0.7));
     z-index: 1;
 }
 
@@ -108,12 +104,7 @@ nav a.active::after {
     max-width: 600px;
     height: 1px;
     margin: 60px auto 40px;
-    background: linear-gradient(
-        to right,
-        transparent,
-        rgba(77, 143, 77, 0.6),
-        transparent
-    );
+    background: linear-gradient(to right, transparent, rgba(77, 143, 77, 0.6), transparent);
     opacity: 0.6;
 }
 
@@ -131,9 +122,7 @@ section {
     background: rgba(255, 255, 255, 0.78);
     backdrop-filter: blur(6px);
     border-radius: 18px;
-    box-shadow:
-        0 20px 40px rgba(60, 120, 60, 0.15),
-        inset 0 0 0 1px rgba(255,255,255,0.4);
+    box-shadow: 0 20px 40px rgba(60, 120, 60, 0.15), inset 0 0 0 1px rgba(255,255,255,0.4);
     display: none;
     opacity: 0;
     transform: translateY(24px);
@@ -168,7 +157,7 @@ footer a {
     text-decoration: none;
 }
 
-/* ===== 歌词 demo ===== */
+/* ===== 歌词 ===== */
 .lyrics-wrapper {
     display: flex;
     gap: 40px;
@@ -227,31 +216,39 @@ footer a {
     color: #2f3d2f;
 }
 
-/* ===== 哲学博客 ===== */
+/* ===== 哲学板块 ===== */
 .philosophy-item {
+    margin-bottom: 28px;
+    padding: 20px;
     background: rgba(255,255,255,0.85);
-    backdrop-filter: blur(4px);
-    padding: 24px 28px;
-    margin-bottom: 24px;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(60,120,60,0.1);
+    border-radius: 14px;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s forwards;
+}
+
+.philosophy-item:nth-child(1) { animation-delay: 0.1s; }
+.philosophy-item:nth-child(2) { animation-delay: 0.2s; }
+.philosophy-item:nth-child(3) { animation-delay: 0.3s; }
+.philosophy-item:nth-child(4) { animation-delay: 0.4s; }
+/* 可继续增加更多 delay */
+
+@keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .philosophy-item h3 {
-    margin: 0 0 8px 0;
+    margin: 0 0 4px 0;
     font-size: 1.1em;
     color: #3f7f4a;
 }
 
 .philosophy-item .date {
     font-size: 0.75em;
-    opacity: 0.7;
-    margin-bottom: 12px;
-}
-
-.philosophy-item p {
-    margin: 0;
-    line-height: 1.7;
+    color: #4d6f4d;
+    margin-bottom: 6px;
 }
 
 /* ===== BGM 按钮 ===== */
@@ -292,20 +289,17 @@ footer a {
 </header>
 
 <main>
-    <!-- 你听 -->
     <section id="music" class="active">
         <h2>你聽</h2>
         <p>這裏記錄我們的聲音。</p>
         <p>歌曲一 ｜ 歌曲二 ｜ 歌曲三</p>
     </section>
 
-    <!-- 我想（博客） -->
     <section id="philosophy">
         <h2>我想</h2>
         <div class="philosophy-list"></div>
     </section>
 
-    <!-- 我在（歌词） -->
     <section id="creation">
         <h2>我在</h2>
         <div class="lyrics-wrapper">
@@ -319,27 +313,26 @@ footer a {
 
 <footer>
    <h3>在這裏還能找到我</h3>
-    <p>📧 <a href="mailto:trunkovo@163.com">trunkovo@163.com</a></p>
-    <p>📺 <a href="https://space.bilibili.com/3493120924715289?spm_id_from=333.1007.0.0" target="_blank">
-        @青叶不会弹bass</a></p>
+   <p>📧 <a href="mailto:trunkovo@163.com">trunkovo@163.com</a></p>
+   <p>📺 <a href="https://space.bilibili.com/3493120924715289?spm_id_from=333.1007.0.0" target="_blank">
+        @青叶不会弹bass</a>
+   </p>
 </footer>
 
-<!-- BGM -->
 <audio id="bgm" src="fall.mp3" loop></audio>
 <button id="bgm-toggle" aria-label="bgm toggle">🎵</button>
 
 <script>
-// ===== 导航切换 =====
+// ===== 页面切换 =====
 const links = document.querySelectorAll('nav a');
 const sections = document.querySelectorAll('section');
 let current = document.querySelector('section.active');
 
 links.forEach(link => {
     link.addEventListener('click', () => {
-        if(link.classList.contains('active')) return;
+        if (link.classList.contains('active')) return;
         links.forEach(l => l.classList.remove('active'));
         link.classList.add('active');
-
         const next = document.getElementById(link.dataset.target);
         current.classList.remove('active');
         next.classList.add('active');
@@ -354,7 +347,7 @@ const contentEl = document.querySelector('.lyrics-content');
 function renderLyrics(lyricsData) {
     listEl.innerHTML = "";
     contentEl.innerHTML = "";
-    lyricsData.forEach((item,index)=>{
+    lyricsData.forEach((item, index) => {
         const li = document.createElement('li');
         li.textContent = item.title;
         li.dataset.id = item.id || `lyric-${index+1}`;
@@ -365,11 +358,11 @@ function renderLyrics(lyricsData) {
         div.id = li.dataset.id;
         div.classList.add('lyric');
         if(index===0) div.classList.add('active');
-        div.innerHTML = `<p>${item.content.replace(/\n/g,"<br>")}</p>`;
+        div.innerHTML = `<p>${item.content.replace(/\n/g, "<br>")}</p>`;
         contentEl.appendChild(div);
     });
 
-    listEl.addEventListener('click', e=>{
+    listEl.addEventListener('click', e => {
         if(e.target.tagName!=='LI') return;
         listEl.querySelectorAll('li').forEach(li=>li.classList.remove('active'));
         e.target.classList.add('active');
@@ -378,44 +371,49 @@ function renderLyrics(lyricsData) {
     });
 }
 
+// 歌词 fallback
 const fallbackLyrics = [
-    { title: "demo 01 · 轰轰鸣", content: "夜雨落在窗台\n像没说完的句子\n灯一直亮着\n没人回来" },
-    { title: "demo 02 · 空房间", content: "空房间没有声音\n只有风在走动\n我坐在地上\n假装什么都没发生" },
-    { title: "demo 03 · 未完成", content: "这首歌还没写完\n副歌停在一半\n如果你听见了\n那可能只是草稿" }
+    { title:"demo 01 · 轰轰鸣", content:"夜雨落在窗台\n像没说完的句子\n灯一直亮着\n没人回来" },
+    { title:"demo 02 · 空房间", content:"空房间没有声音\n只有风在走动\n我坐在地上\n假装什么都没发生" },
+    { title:"demo 03 · 未完成", content:"这首歌还没写完\n副歌停在一半\n如果你听见了\n那可能只是草稿" }
 ];
 
 fetch(`lyrics.json?t=${Date.now()}`)
     .then(res=>res.json())
     .then(data=>renderLyrics(data))
-    .catch(err=>{ renderLyrics(fallbackLyrics); });
+    .catch(err=>{
+        console.warn("加载 lyrics.json 失败，使用 fallback 数据:", err);
+        renderLyrics(fallbackLyrics);
+    });
 
-// ===== 哲学博客渲染 =====
+// ===== 哲学板块 =====
 const philosophyListEl = document.querySelector('.philosophy-list');
+
+function renderPhilosophy(data){
+    philosophyListEl.innerHTML = "";
+    data.forEach((item, index)=>{
+        const div = document.createElement('div');
+        div.classList.add('philosophy-item');
+        div.style.animationDelay = `${0.1 * index}s`;
+        div.innerHTML = `<h3>${item.title}</h3>
+                         <div class="date">${item.date}</div>
+                         <p>${item.content.replace(/\n/g,"<br>")}</p>`;
+        philosophyListEl.appendChild(div);
+    });
+}
+
 const fallbackPhilosophy = [
     { title:"音乐与生活", date:"2025-12-19", content:"音乐不是为了证明什么，而是把一些说不出口的东西，暂时留在空气里。" },
-    { title:"写作的意义", date:"2025-12-18", content:"写作是整理思绪的过程，它不会让你成为完美的人，但会让你更理解自己。" },
-    { title:"关于孤独", date:"2025-12-17", content:"孤独并不可怕，可怕的是你害怕面对它。学会和自己相处，其实是一种力量。" }
+    { title:"写作的意义", date:"2025-12-18", content:"写作是整理思绪的过程，它不会让你成为完美的人，但会让你更理解自己。" }
 ];
 
 fetch(`philosophy.json?t=${Date.now()}`)
-    .then(res=>res.json())
-    .then(data=>{
-        philosophyListEl.innerHTML = "";
-        data.forEach(item=>{
-            const div = document.createElement('div');
-            div.classList.add('philosophy-item');
-            div.innerHTML = `<h3>${item.title}</h3><div class="date">${item.date}</div><p>${item.content.replace(/\n/g,"<br>")}</p>`;
-            philosophyListEl.appendChild(div);
-        });
-    })
-    .catch(err=>{
-        fallbackPhilosophy.forEach(item=>{
-            const div = document.createElement('div');
-            div.classList.add('philosophy-item');
-            div.innerHTML = `<h3>${item.title}</h3><div class="date">${item.date}</div><p>${item.content.replace(/\n/g,"<br>")}</p>`;
-            philosophyListEl.appendChild(div);
-        });
-    });
+  .then(res=>res.json())
+  .then(data=>renderPhilosophy(data))
+  .catch(err=>{
+      console.warn("加载 philosophy.json 失败，使用 fallback 数据:", err);
+      renderPhilosophy(fallbackPhilosophy);
+  });
 
 // ===== BGM 控制 =====
 const bgm = document.getElementById('bgm');
@@ -426,23 +424,23 @@ bgmToggle.addEventListener('click', ()=>{
     if(isPlaying){
         bgm.pause();
         bgmToggle.classList.add('paused');
-    } else {
+    }else{
         bgm.play().catch(()=>{});
         bgmToggle.classList.remove('paused');
     }
     isPlaying = !isPlaying;
 });
 
-const unlockAudio = () => {
+const unlockAudio = ()=>{
     if(!isPlaying){
-        bgm.play().then(()=>{ isPlaying=true; bgmToggle.classList.remove('paused'); }).catch(()=>{});
+        bgm.play().then(()=>{isPlaying=true; bgmToggle.classList.remove('paused');}).catch(()=>{});
     }
     document.removeEventListener('touchstart', unlockAudio);
     document.removeEventListener('click', unlockAudio);
 };
 
-document.addEventListener('touchstart', unlockAudio, { once:true });
-document.addEventListener('click', unlockAudio, { once:true });
+document.addEventListener('touchstart', unlockAudio, {once:true});
+document.addEventListener('click', unlockAudio, {once:true});
 </script>
 
 </body>
