@@ -273,6 +273,11 @@ footer a {
     .lyrics-content {
         min-height: 150px;
     }
+   
+    .lyrics-content p {
+    max-width: 100%; /* 手机全屏显示 */
+    word-break: break-word; /* 单词长也能换行 */
+    }
 }
 
     
@@ -416,6 +421,7 @@ fetch(`lyrics.json?t=${Date.now()}`)
 
 </body>
 </html>
+
 
 
 
