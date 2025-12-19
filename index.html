@@ -196,10 +196,10 @@ footer a {
 
 /* ===== 歌词 demo ===== */
 .lyrics-wrapper {
-    display: grid;
-    grid-template-columns: 180px 1fr;
+    display: flex;
     gap: 40px;
     margin-top: 30px;
+    flex-wrap: wrap; /* 自动换行 */
 }
 
 .lyrics-list {
@@ -209,6 +209,8 @@ footer a {
     font-family: "Inter", sans-serif;
     font-size: 0.85em;
     letter-spacing: 0.15em;
+
+    flex: 0 0 180px; /* 桌面左栏宽度固定 */
 }
 
 .lyrics-list li {
@@ -226,6 +228,7 @@ footer a {
 .lyrics-content {
     position: relative;
     min-height: 180px;
+    flex: 1 1 0; /* 右栏自适应剩余宽度 */
 }
 
 .lyric {
@@ -254,31 +257,34 @@ footer a {
     color: #2f3d2f;
 }
 
+/* ===== 响应式 ===== */
 @media (max-width: 600px) {
     .lyrics-wrapper {
-        grid-template-columns: 1fr; /* 左右合并成一列 */
+        flex-direction: column; /* 上下排列 */
         gap: 20px;
     }
 
     .lyrics-list {
+        flex: 1 1 auto;
         display: flex;
         overflow-x: auto; /* 横向滚动目录 */
         gap: 16px;
     }
 
     .lyrics-list li {
-        flex: 0 0 auto; /* 保证横向滚动每个条目宽度自适应 */
+        flex: 0 0 auto; /* 每个条目自适应内容宽度 */
     }
 
     .lyrics-content {
         min-height: 150px;
     }
-   
+
     .lyrics-content p {
-    max-width: 100%; /* 手机全屏显示 */
-    word-break: break-word; /* 单词长也能换行 */
+        max-width: 100%; /* 手机全屏显示 */
+        word-break: break-word;
     }
 }
+
 
     
 </style>
@@ -421,6 +427,7 @@ fetch(`lyrics.json?t=${Date.now()}`)
 
 </body>
 </html>
+
 
 
 
