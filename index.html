@@ -185,102 +185,44 @@ footer a {
     text-decoration: none;
 }
 
-/* ===== 歌词 demo ===== */
-.lyrics-wrapper {
-    display: flex;
-    gap: 40px;
-    margin-top: 30px;
-    flex-wrap: wrap; /* 自动换行 */
-}
-
-.lyrics-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    font-family: "Inter", sans-serif;
-    font-size: 0.85em;
-    letter-spacing: 0.15em;
-
-    flex: 0 0 180px; /* 桌面左栏宽度固定 */
-}
-
-.lyrics-list li {
-    margin-bottom: 18px;
-    cursor: pointer;
-    opacity: 0.5;
-    transition: opacity 0.3s ease;
-}
-
-.lyrics-list li.active,
-.lyrics-list li:hover {
-    opacity: 1;
-}
-
-.lyrics-content {
-    position: relative;
-    min-height: 180px;
-    flex: 1 1 0; /* 右栏自适应剩余宽度 */
-    
-}
-
-.lyric {
-    display: none;
-    opacity: 0;
-    transform: translateY(10px);
-}
-
-.lyric.active {
-    display: block;
-    animation: lyricFade 0.5s ease forwards;
-}
-
-@keyframes lyricFade {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.lyric p {
-    white-space: pre-line;
-    font-family: "Noto Serif SC", serif;
-    font-size: 0.95em;
-    line-height: 2;
-    color: #2f3d2f;
-}
-
-
 @media (max-width: 600px) {
 
+    /* 关键：把 grid 变成 flex */
     .lyrics-wrapper {
-        display: flex;          /* ⭐ 必须 */
-        flex-direction: column; /* 上下排列 */
+        display: flex;
+        flex-direction: column;
         gap: 20px;
     }
 
     .lyrics-list {
         display: flex;
-        overflow-x: auto;
         gap: 16px;
+        overflow-x: auto;
+        padding-bottom: 6px;
     }
 
     .lyrics-list li {
         flex: 0 0 auto;
+        white-space: nowrap;
     }
 
+    /* 让歌词区自然撑开 */
     .lyrics-content {
+        min-height: auto;
         width: 100%;
     }
 
-    /* ⚠️ 注意这里选择器要对 */
+    .lyric {
+        width: 100%;
+    }
+
     .lyric p {
         max-width: 100%;
-        white-space: normal;
-        word-break: break-word;
-        overflow-wrap: break-word;
         box-sizing: border-box;
+        word-break: break-word;
     }
 }
+
     
 </style>
 </head>
@@ -422,6 +364,7 @@ fetch(`lyrics.json?t=${Date.now()}`)
 
 </body>
 </html>
+
 
 
 
