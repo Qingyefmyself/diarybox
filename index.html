@@ -13,6 +13,7 @@ body {
     background: linear-gradient(#e9fbe9, #e2f5e2);
     color: #2f3d2f;
     line-height: 1.9;
+    overflow-y: hidden;
 }
 
 @font-face {
@@ -129,6 +130,8 @@ nav a.active::after {
 main {
     padding: 60px 20px;
     min-height: 420px;
+    overflow-y: auto;
+    height: calc(100vh - 260px); /* 头部 + padding 的近似值 */
 }
 
 /* ===== 内容卡片 ===== */
@@ -436,6 +439,7 @@ fetch(`lyrics.json?t=${Date.now()}`)
 
 </body>
 </html>
+
 
 
 
