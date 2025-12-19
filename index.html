@@ -186,39 +186,30 @@ footer a {
 }
 
 @media (max-width: 600px) {
-
-    /* 关键：把 grid 变成 flex */
     .lyrics-wrapper {
-        display: flex;
-        flex-direction: column;
+        display: flex;          /* 只在这里 */
+        flex-direction: column; /* 上下 */
         gap: 20px;
     }
 
+
     .lyrics-list {
+        flex: 1 1 auto;
         display: flex;
-        gap: 16px;
         overflow-x: auto;
-        padding-bottom: 6px;
+        gap: 16px;
     }
 
     .lyrics-list li {
         flex: 0 0 auto;
-        white-space: nowrap;
     }
 
-    /* 让歌词区自然撑开 */
     .lyrics-content {
-        min-height: auto;
-        width: 100%;
+        min-height: 150px;
     }
 
-    .lyric {
-        width: 100%;
-    }
-
-    .lyric p {
+    .lyrics-content p {
         max-width: 100%;
-        box-sizing: border-box;
         word-break: break-word;
     }
 }
@@ -364,6 +355,7 @@ fetch(`lyrics.json?t=${Date.now()}`)
 
 </body>
 </html>
+
 
 
 
