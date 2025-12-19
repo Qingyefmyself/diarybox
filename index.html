@@ -21,9 +21,7 @@ body {
     font-weight: 400;
     font-style: normal;
 }
-body {
-    font-family: "xiangsuti", serif;
-}
+body { font-family: "xiangsuti", serif; }
 
 /* ===== 头部 ===== */
 header {
@@ -40,298 +38,123 @@ header::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, rgba(20, 60, 30, 0.45), rgba(20, 60, 30, 0.7));
+    background: linear-gradient(to bottom, rgba(20,60,30,0.45), rgba(20,60,30,0.7));
     z-index: 1;
 }
 
-.header-inner {
-    position: relative;
-    z-index: 2;
-}
+.header-inner { position: relative; z-index: 2; }
 
-h1 {
-    margin: 0;
-    font-size: 2.1em;
-    letter-spacing: 0.25em;
-    color: #f2fff2;
-}
-
-header p {
-    margin-top: 10px;
-    font-size: 0.85em;
-    color: rgba(240, 255, 240, 0.85);
-}
+h1 { margin:0; font-size:2.1em; letter-spacing:0.25em; color:#f2fff2; }
+header p { margin-top:10px; font-size:0.85em; color:rgba(240,255,240,0.85); }
 
 /* ===== 导航 ===== */
-nav {
-    margin-top: 20px;
-}
-
-nav a {
-    margin-right: 28px;
-    text-decoration: none;
-    font-weight: 600;
-    color: #e3f8e3;
-    position: relative;
-    cursor: pointer;
-    opacity: 0.6;
-    transition: opacity 0.3s ease;
-}
-
-nav a.active,
-nav a:hover {
-    opacity: 1;
-}
-
-nav a::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -8px;
-    width: 100%;
-    height: 2px;
-    background: #4d8f4d;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.35s ease;
-}
-
-nav a.active::after {
-    transform: scaleX(1);
-}
-
-.footer-divider {
-    max-width: 600px;
-    height: 1px;
-    margin: 60px auto 40px;
-    background: linear-gradient(to right, transparent, rgba(77, 143, 77, 0.6), transparent);
-    opacity: 0.6;
-}
+nav { margin-top:20px; }
+nav a { margin-right:28px; text-decoration:none; font-weight:600; color:#e3f8e3; position:relative; cursor:pointer; opacity:0.6; transition:opacity 0.3s ease; }
+nav a.active, nav a:hover { opacity:1; }
+nav a::after { content:''; position:absolute; left:0; bottom:-8px; width:100%; height:2px; background:#4d8f4d; transform:scaleX(0); transform-origin:left; transition:transform 0.35s ease; }
+nav a.active::after { transform:scaleX(1); }
 
 /* ===== 主体 ===== */
-main {
-    padding: 60px 20px;
-    min-height: 420px;
-}
+main { padding:60px 20px; min-height:420px; }
 
 /* ===== 内容卡片 ===== */
 section {
-    max-width: 820px;
-    margin: auto;
-    padding: 42px 46px;
-    background: rgba(255, 255, 255, 0.78);
+    max-width:820px;
+    margin:auto;
+    padding:42px 46px;
+    background:rgba(255,255,255,0.78);
     backdrop-filter: blur(6px);
-    border-radius: 18px;
-    box-shadow: 0 20px 40px rgba(60, 120, 60, 0.15), inset 0 0 0 1px rgba(255,255,255,0.4);
-    display: none;
-    opacity: 0;
-    transform: translateY(24px);
+    border-radius:18px;
+    box-shadow:0 20px 40px rgba(60,120,60,0.15), inset 0 0 0 1px rgba(255,255,255,0.4);
+    display:none;
+    opacity:0;
+    transform:translateY(24px);
 }
-
-section.active {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-}
+section.active { display:block; opacity:1; transform:translateY(0); transition:opacity 0.4s ease, transform 0.4s ease; }
 
 /* ===== 标题 ===== */
-h2 {
-    margin-top: 0;
-    font-size: 1.2em;
-    letter-spacing: 0.3em;
-    color: #3f7f4a;
-}
+h2 { margin-top:0; font-size:1.2em; letter-spacing:0.3em; color:#3f7f4a; }
 
 /* ===== 页脚 ===== */
-footer {
-    text-align: center;
-    padding: 40px 20px;
-    color: #4d6f4d;
-    font-size: 0.85em;
-    opacity: 0.85;
-}
+footer { text-align:center; padding:40px 20px; color:#4d6f4d; font-size:0.85em; opacity:0.85; }
+footer a { color:#3f7f4a; text-decoration:none; }
 
-footer a {
-    color: #3f7f4a;
-    text-decoration: none;
-}
-
-/* ===== 歌词 ===== */
-.lyrics-wrapper {
-    display: flex;
-    gap: 40px;
-    margin-top: 30px;
-    flex-wrap: wrap;
-}
-
-.lyrics-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    font-family: "Inter", sans-serif;
-    font-size: 0.85em;
-    letter-spacing: 0.15em;
-    flex: 0 0 180px;
-}
-
-.lyrics-list li {
-    margin-bottom: 18px;
-    cursor: pointer;
-    opacity: 0.5;
-    transition: opacity 0.3s ease;
-}
-
-.lyrics-list li.active,
-.lyrics-list li:hover {
-    opacity: 1;
-}
-
-.lyrics-content {
-    position: relative;
-    min-height: 180px;
-    flex: 1 1 0;
-}
-
-.lyric {
-    display: none;
-    opacity: 0;
-    transform: translateY(10px);
-}
-
-.lyric.active {
-    display: block;
-    animation: lyricFade 0.5s ease forwards;
-}
-
-@keyframes lyricFade {
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.lyric p {
-    white-space: pre-line;
-    font-family: "Noto Serif SC", serif;
-    font-size: 0.95em;
-    line-height: 2;
-    color: #2f3d2f;
-}
-
-/* ===== 哲学板块 ===== */
-.philosophy-item {
-    margin-bottom: 28px;
-    padding: 20px;
-    background: rgba(255,255,255,0.85);
-    border-radius: 14px;
-    backdrop-filter: blur(6px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.6s forwards;
-}
-
-.philosophy-item:nth-child(1) { animation-delay: 0.1s; }
-.philosophy-item:nth-child(2) { animation-delay: 0.2s; }
-.philosophy-item:nth-child(3) { animation-delay: 0.3s; }
-.philosophy-item:nth-child(4) { animation-delay: 0.4s; }
-/* 可继续增加更多 delay */
-
-@keyframes fadeInUp {
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.philosophy-item h3 {
-    margin: 0 0 4px 0;
-    font-size: 1.1em;
-    color: #3f7f4a;
-}
-
-.philosophy-item .date {
-    font-size: 0.75em;
-    color: #4d6f4d;
-    margin-bottom: 6px;
-}
+/* ===== 歌词 demo ===== */
+.lyrics-wrapper { display:flex; gap:40px; margin-top:30px; flex-wrap:wrap; }
+.lyrics-list { list-style:none; padding:0; margin:0; font-family:"Inter",sans-serif; font-size:0.85em; letter-spacing:0.15em; flex:0 0 180px; }
+.lyrics-list li { margin-bottom:18px; cursor:pointer; opacity:0.5; transition:opacity 0.3s ease; }
+.lyrics-list li.active, .lyrics-list li:hover { opacity:1; }
+.lyrics-content { position:relative; min-height:180px; flex:1 1 0; }
+.lyric { display:none; opacity:0; transform:translateY(10px); }
+.lyric.active { display:block; animation:lyricFade 0.5s ease forwards; }
+@keyframes lyricFade { to { opacity:1; transform:translateY(0); } }
+.lyric p { white-space:pre-line; font-family:"Noto Serif SC", serif; font-size:0.95em; line-height:2; color:#2f3d2f; }
 
 /* ===== BGM 按钮 ===== */
-#bgm-toggle {
-    position: fixed;
-    right: 18px;
-    bottom: 18px;
-    z-index: 9999;
-    width: 46px;
-    height: 46px;
-    border-radius: 50%;
-    border: none;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(6px);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-    font-size: 20px;
-    cursor: pointer;
-    transition: transform 0.2s ease, opacity 0.2s ease;
-}
+#bgm-toggle { position:fixed; right:18px; bottom:18px; z-index:9999; width:46px; height:46px; border-radius:50%; border:none; background:rgba(255,255,255,0.85); backdrop-filter:blur(6px); box-shadow:0 6px 18px rgba(0,0,0,0.15); font-size:20px; cursor:pointer; transition: transform 0.2s ease, opacity 0.2s ease;}
+#bgm-toggle.paused { opacity:0.5; }
+#bgm-toggle:active { transform:scale(0.92); }
 
-#bgm-toggle.paused { opacity: 0.5; }
-#bgm-toggle:active { transform: scale(0.92); }
 </style>
 </head>
 
 <body>
 
 <header>
-    <div class="header-inner">
-        <h1>青葉一盒</h1>
-        <p>一些不太響亮，但很真實的聲音</p>
-        <nav>
-            <a class="active" data-target="music">你聽</a>
-            <a data-target="philosophy">我想</a>
-            <a data-target="creation">我在</a>
-        </nav>
-    </div>
+<div class="header-inner">
+<h1>青葉一盒</h1>
+<p>一些不太響亮，但很真實的聲音</p>
+
+<nav>
+<a class="active" data-target="music">你聽</a>
+<a data-target="philosophy">我想</a>
+<a data-target="creation">我在</a>
+</nav>
+</div>
 </header>
 
 <main>
-    <section id="music" class="active">
-        <h2>你聽</h2>
-        <p>這裏記錄我們的聲音。</p>
-        <p>歌曲一 ｜ 歌曲二 ｜ 歌曲三</p>
-    </section>
+<section id="music" class="active">
+<h2>你聽</h2>
+<div id="music-content">加载中...</div>
+</section>
 
-    <section id="philosophy">
-        <h2>我想</h2>
-        <div class="philosophy-list"></div>
-    </section>
+<section id="philosophy">
+<h2>我想</h2>
+<div id="philosophy-content">加载中...</div>
+</section>
 
-    <section id="creation">
-        <h2>我在</h2>
-        <div class="lyrics-wrapper">
-            <ul class="lyrics-list"></ul>
-            <div class="lyrics-content"></div>
-        </div>
-    </section>
+<section id="creation">
+<h2>我在</h2>
+<div class="lyrics-wrapper">
+<ul class="lyrics-list"></ul>
+<div class="lyrics-content"></div>
+</div>
+</section>
 </main>
 
 <div class="footer-divider"></div>
 
 <footer>
-   <h3>在這裏還能找到我</h3>
-   <p>📧 <a href="mailto:trunkovo@163.com">trunkovo@163.com</a></p>
-   <p>📺 <a href="https://space.bilibili.com/3493120924715289?spm_id_from=333.1007.0.0" target="_blank">
-        @青叶不会弹bass</a>
-   </p>
+<h3>在這裏還能找到我</h3>
+<p>📧 <a href="mailto:trunkovo@163.com">trunkovo@163.com</a></p>
+<p>📺 <a href="https://space.bilibili.com/3493120924715289" target="_blank">@青叶不会弹bass</a></p>
 </footer>
 
+<!-- 音乐 -->
 <audio id="bgm" src="fall.mp3" loop></audio>
 <button id="bgm-toggle" aria-label="bgm toggle">🎵</button>
 
 <script>
-// ===== 页面切换 =====
 const links = document.querySelectorAll('nav a');
 const sections = document.querySelectorAll('section');
 let current = document.querySelector('section.active');
 
-links.forEach(link => {
-    link.addEventListener('click', () => {
-        if (link.classList.contains('active')) return;
-        links.forEach(l => l.classList.remove('active'));
+// 切换板块
+links.forEach(link=>{
+    link.addEventListener('click',()=>{
+        if(link.classList.contains('active')) return;
+        links.forEach(l=>l.classList.remove('active'));
         link.classList.add('active');
         const next = document.getElementById(link.dataset.target);
         current.classList.remove('active');
@@ -340,29 +163,56 @@ links.forEach(link => {
     });
 });
 
+// ===== JSON 渲染函数 =====
+function fetchAndRender(url, containerSelector, fallback){
+    fetch(url + '?t=' + Date.now())
+    .then(res=>res.json())
+    .then(data=>{
+        const container = document.querySelector(containerSelector);
+        container.innerHTML = '';
+        data.forEach(item=>{
+            const div = document.createElement('div');
+            div.innerHTML = `<h3>${item.title}</h3><p>${item.content.replace(/\n/g,'<br>')}</p>`;
+            container.appendChild(div);
+        });
+    })
+    .catch(err=>{
+        console.warn(`加载 ${url} 失败，使用 fallback`, err);
+        const container = document.querySelector(containerSelector);
+        container.innerHTML = '';
+        fallback.forEach(item=>{
+            const div = document.createElement('div');
+            div.innerHTML = `<h3>${item.title}</h3><p>${item.content.replace(/\n/g,'<br>')}</p>`;
+            container.appendChild(div);
+        });
+    });
+}
+
+// 内置 fallback
+const fallbackMusic = [{title:"demo 歌曲一", content:"这里是 demo 音乐内容"}];
+const fallbackPhilosophy = [{title:"demo 想法一", content:"这里是 demo 想法内容"}];
+
+// 调用
+fetchAndRender('./music.json','#music-content', fallbackMusic);
+fetchAndRender('./philosophy.json','#philosophy-content', fallbackPhilosophy);
+
 // ===== 歌词渲染 =====
 const listEl = document.querySelector('.lyrics-list');
 const contentEl = document.querySelector('.lyrics-content');
-
-function renderLyrics(lyricsData) {
-    listEl.innerHTML = "";
-    contentEl.innerHTML = "";
-    lyricsData.forEach((item, index) => {
-        const li = document.createElement('li');
-        li.textContent = item.title;
-        li.dataset.id = item.id || `lyric-${index+1}`;
-        if(index===0) li.classList.add('active');
-        listEl.appendChild(li);
-
-        const div = document.createElement('div');
-        div.id = li.dataset.id;
-        div.classList.add('lyric');
-        if(index===0) div.classList.add('active');
-        div.innerHTML = `<p>${item.content.replace(/\n/g, "<br>")}</p>`;
-        contentEl.appendChild(div);
+const fallbackLyrics = [
+    { title: "demo 01 · 轰轰鸣", content: "夜雨落在窗台\n像没说完的句子\n灯一直亮着\n没人回来" },
+    { title: "demo 02 · 空房间", content: "空房间没有声音\n只有风在走动\n我坐在地上\n假装什么都没发生" },
+    { title: "demo 03 · 未完成", content: "这首歌还没写完\n副歌停在一半\n如果你听见了\n那可能只是草稿" }
+];
+function renderLyrics(lyricsData){
+    listEl.innerHTML=''; contentEl.innerHTML='';
+    lyricsData.forEach((item,index)=>{
+        const li = document.createElement('li'); li.textContent=item.title; li.dataset.id=item.id||`lyric-${index+1}`;
+        if(index===0) li.classList.add('active'); listEl.appendChild(li);
+        const div=document.createElement('div'); div.id=li.dataset.id; div.classList.add('lyric'); if(index===0) div.classList.add('active');
+        div.innerHTML=`<p>${item.content.replace(/\n/g,'<br>')}</p>`; contentEl.appendChild(div);
     });
-
-    listEl.addEventListener('click', e => {
+    listEl.addEventListener('click',e=>{
         if(e.target.tagName!=='LI') return;
         listEl.querySelectorAll('li').forEach(li=>li.classList.remove('active'));
         e.target.classList.add('active');
@@ -370,80 +220,28 @@ function renderLyrics(lyricsData) {
         document.getElementById(e.target.dataset.id).classList.add('active');
     });
 }
-
-// 歌词 fallback
-const fallbackLyrics = [
-    { title:"demo 01 · 轰轰鸣", content:"夜雨落在窗台\n像没说完的句子\n灯一直亮着\n没人回来" },
-    { title:"demo 02 · 空房间", content:"空房间没有声音\n只有风在走动\n我坐在地上\n假装什么都没发生" },
-    { title:"demo 03 · 未完成", content:"这首歌还没写完\n副歌停在一半\n如果你听见了\n那可能只是草稿" }
-];
-
-fetch(`lyrics.json?t=${Date.now()}`)
-    .then(res=>res.json())
-    .then(data=>renderLyrics(data))
-    .catch(err=>{
-        console.warn("加载 lyrics.json 失败，使用 fallback 数据:", err);
-        renderLyrics(fallbackLyrics);
-    });
-
-// ===== 哲学板块 =====
-const philosophyListEl = document.querySelector('.philosophy-list');
-
-function renderPhilosophy(data){
-    philosophyListEl.innerHTML = "";
-    data.forEach((item, index)=>{
-        const div = document.createElement('div');
-        div.classList.add('philosophy-item');
-        div.style.animationDelay = `${0.1 * index}s`;
-        div.innerHTML = `<h3>${item.title}</h3>
-                         <div class="date">${item.date}</div>
-                         <p>${item.content.replace(/\n/g,"<br>")}</p>`;
-        philosophyListEl.appendChild(div);
-    });
-}
-
-const fallbackPhilosophy = [
-    { title:"音乐与生活", date:"2025-12-19", content:"音乐不是为了证明什么，而是把一些说不出口的东西，暂时留在空气里。" },
-    { title:"写作的意义", date:"2025-12-18", content:"写作是整理思绪的过程，它不会让你成为完美的人，但会让你更理解自己。" }
-];
-
-fetch(`./philosophy.json?t=${Date.now()}`)
-  .then(res=>res.json())
-  .then(data=>renderPhilosophy(data))
-  .catch(err=>{
-      console.warn("加载 philosophy.json 失败，使用 fallback 数据:", err);
-      renderPhilosophy(fallbackPhilosophy);
-  });
+fetch('./lyrics.json?t='+Date.now())
+.then(res=>res.json()).then(data=>renderLyrics(data)).catch(()=>renderLyrics(fallbackLyrics));
 
 // ===== BGM 控制 =====
 const bgm = document.getElementById('bgm');
 const bgmToggle = document.getElementById('bgm-toggle');
 let isPlaying = false;
 
-bgmToggle.addEventListener('click', ()=>{
-    if(isPlaying){
-        bgm.pause();
-        bgmToggle.classList.add('paused');
-    }else{
-        bgm.play().catch(()=>{});
-        bgmToggle.classList.remove('paused');
-    }
-    isPlaying = !isPlaying;
+bgmToggle.addEventListener('click',()=>{
+    if(isPlaying){ bgm.pause(); bgmToggle.classList.add('paused'); } 
+    else{ bgm.play().catch(()=>{}); bgmToggle.classList.remove('paused'); }
+    isPlaying=!isPlaying;
 });
 
-const unlockAudio = ()=>{
-    if(!isPlaying){
-        bgm.play().then(()=>{isPlaying=true; bgmToggle.classList.remove('paused');}).catch(()=>{});
-    }
-    document.removeEventListener('touchstart', unlockAudio);
-    document.removeEventListener('click', unlockAudio);
+const unlockAudio = () => {
+    if(!isPlaying){ bgm.play().then(()=>{isPlaying=true; bgmToggle.classList.remove('paused');}).catch(()=>{});}
+    document.removeEventListener('touchstart',unlockAudio);
+    document.removeEventListener('click',unlockAudio);
 };
-
-document.addEventListener('touchstart', unlockAudio, {once:true});
-document.addEventListener('click', unlockAudio, {once:true});
+document.addEventListener('touchstart',unlockAudio,{once:true});
+document.addEventListener('click',unlockAudio,{once:true});
 </script>
 
 </body>
 </html>
-
-
