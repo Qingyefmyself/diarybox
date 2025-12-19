@@ -250,14 +250,12 @@ footer a {
 
 @media (max-width: 600px) {
     .lyrics-wrapper {
-        display: flex;          /* 只在这里 */
-        flex-direction: column; /* 上下 */
+        display: flex;
+        flex-direction: column;
         gap: 20px;
     }
 
-
     .lyrics-list {
-        flex: 1 1 auto;
         display: flex;
         overflow-x: auto;
         gap: 16px;
@@ -265,18 +263,18 @@ footer a {
 
     .lyrics-list li {
         flex: 0 0 auto;
+        white-space: nowrap;
     }
 
     .lyrics-content {
-        min-height: 150px;
+        min-height: auto;
     }
 
-    .lyrics-content p {
+    .lyric p {
         max-width: 100%;
         word-break: break-word;
     }
 }
-
     
 </style>
 </head>
@@ -418,6 +416,7 @@ fetch(`lyrics.json?t=${Date.now()}`)
 
 </body>
 </html>
+
 
 
 
