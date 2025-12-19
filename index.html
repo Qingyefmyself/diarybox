@@ -199,7 +199,7 @@ footer a {
     display: flex;
     gap: 40px;
     margin-top: 30px;
-    flex-wrap: wrap; /* 自动换行 */
+    flex-wrap: wrap;
 }
 
 .lyrics-list {
@@ -209,33 +209,21 @@ footer a {
     font-family: "Inter", sans-serif;
     font-size: 0.85em;
     letter-spacing: 0.15em;
-
-    flex: 0 0 180px; /* 桌面左栏宽度固定 */
-}
-
-.lyrics-list li {
-    margin-bottom: 18px;
-    cursor: pointer;
-    opacity: 0.5;
-    transition: opacity 0.3s ease;
-}
-
-.lyrics-list li.active,
-.lyrics-list li:hover {
-    opacity: 1;
+    flex: 0 0 180px;
 }
 
 .lyrics-content {
     position: relative;
     min-height: 180px;
-    flex: 1 1 0; /* 右栏自适应剩余宽度 */
-    min-width: 0
+    flex: 1 1 0;
+    min-width: 0; /* ⭐⭐⭐ 必须有 */
 }
 
 .lyric {
     display: none;
     opacity: 0;
     transform: translateY(10px);
+    max-width: 100%;
 }
 
 .lyric.active {
@@ -243,46 +231,30 @@ footer a {
     animation: lyricFade 0.5s ease forwards;
 }
 
-@keyframes lyricFade {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 .lyric p {
-    white-space: pre-line;
     font-family: "Noto Serif SC", serif;
     font-size: 0.95em;
     line-height: 2;
     color: #2f3d2f;
+    word-break: break-word;
 }
 
-/* ===== 响应式 ===== */
+/* 手机端 */
 @media (max-width: 600px) {
     .lyrics-wrapper {
-        flex-direction: column; /* 上下排列 */
+        flex-direction: column;
         gap: 20px;
     }
 
     .lyrics-list {
-        flex: 1 1 auto;
         display: flex;
-        overflow-x: auto; /* 横向滚动目录 */
+        overflow-x: auto;
         gap: 16px;
+        flex: none;
     }
 
     .lyrics-list li {
-        flex: 0 0 auto; /* 每个条目自适应内容宽度 */
-    }
-
-    .lyrics-content {
-        min-height: 150px;
-    }
-
-    .lyrics-content p {
-        max-width: 100%; /* 手机全屏显示 */
-        word-break: break-word;
+        flex: 0 0 auto;
     }
 }
 
@@ -428,6 +400,7 @@ fetch(`lyrics.json?t=${Date.now()}`)
 
 </body>
 </html>
+
 
 
 
