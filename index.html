@@ -257,13 +257,19 @@ footer a {
 
     .lyrics-list {
         display: flex;
-        overflow-x: auto;
+        flex-wrap: nowrap;          /* 关键 1：强制单行 */
+        overflow-x: auto;           /* 横向滚动 */
+        overflow-y: hidden;
         gap: 16px;
+
+        width: 100%;                /* 关键 2：明确宽度 */
+        max-width: 100%;
+        -webkit-overflow-scrolling: touch; /* 关键 3：微信顺滑滚动 */
     }
 
     .lyrics-list li {
-        flex: 0 0 auto;
-        white-space: nowrap;
+        flex: 0 0 auto;             /* 关键 4：不允许被压缩 */
+        white-space: nowrap;        /* 关键 5：一项一行 */
     }
 
     .lyrics-content {
@@ -416,6 +422,7 @@ fetch(`lyrics.json?t=${Date.now()}`)
 
 </body>
 </html>
+
 
 
 
