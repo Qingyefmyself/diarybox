@@ -338,42 +338,60 @@ links.forEach(link => {
     });
 });
 
-// ===== 动态加载歌词 JSON =====
+// 歌词渲染函数
 const listEl = document.querySelector('.lyrics-list');
 const contentEl = document.querySelector('.lyrics-content');
 
+function renderLyrics(lyricsData) {
+    listEl.innerHTML = "";
+    contentEl.innerHTML = "";
+
+    lyricsData.forEach((item, index) => {
+        // 目录
+        const li = document.createElement('li');
+        li.textContent = item.title;
+        li.dataset.id = item.id || `lyric-${index+1}`; // 自动生成 ID
+        if(index === 0) li.classList.add('active');
+        listEl.appendChild(li);
+
+        // 歌词内容
+        const div = document.createElement('div');
+        div.id = li.dataset.id;
+        div.classList.add('lyric');
+        if(index === 0) div.classList.add('active');
+        div.innerHTML = `<p>${item.content.replace(/\n/g, "<br>")}</p>`;
+        contentEl.appendChild(div);
+    });
+
+    // 点击切换歌词
+    listEl.addEventListener('click', e => {
+        if(e.target.tagName !== 'LI') return;
+        listEl.querySelectorAll('li').forEach(li => li.classList.remove('active'));
+        e.target.classList.add('active');
+
+        contentEl.querySelectorAll('.lyric').forEach(div => div.classList.remove('active'));
+        document.getElementById(e.target.dataset.id).classList.add('active');
+    });
+}
+
+// 内置 fallback 数据（本地 HTML 可用）
+const fallbackLyrics = [
+    { title: "demo 01 · 轰轰鸣", content: "夜雨落在窗台\n像没说完的句子\n灯一直亮着\n没人回来" },
+    { title: "demo 02 · 空房间", content: "空房间没有声音\n只有风在走动\n我坐在地上\n假装什么都没发生" },
+    { title: "demo 03 · 未完成", content: "这首歌还没写完\n副歌停在一半\n如果你听见了\n那可能只是草稿" }
+];
+
+// 尝试 fetch JSON
 fetch('lyrics.json')
-  .then(res => res.json())
-  .then(lyricsData => {
-      // 渲染目录和歌词
-      lyricsData.forEach((item, index) => {
-          // 目录
-          const li = document.createElement('li');
-          li.textContent = item.title;
-          li.dataset.id = item.id;
-          if(index === 0) li.classList.add('active');
-          listEl.appendChild(li);
+    .then(res => res.json())
+    .then(data => renderLyrics(data))
+    .catch(err => {
+        console.warn("加载 lyrics.json 失败，使用 fallback 数据:", err);
+        renderLyrics(fallbackLyrics);
+    });
 
-          // 歌词内容
-          const div = document.createElement('div');
-          div.id = item.id;
-          div.classList.add('lyric');
-          if(index === 0) div.classList.add('active');
-          div.innerHTML = `<p>${item.content.replace(/\n/g, "<br>")}</p>`;
-          contentEl.appendChild(div);
-      });
-
-      // 点击切换
-      listEl.addEventListener('click', e => {
-          if(e.target.tagName !== 'LI') return;
-          listEl.querySelectorAll('li').forEach(li => li.classList.remove('active'));
-          e.target.classList.add('active');
-
-          contentEl.querySelectorAll('.lyric').forEach(div => div.classList.remove('active'));
-          document.getElementById(e.target.dataset.id).classList.add('active');
-      });
-  })
-  .catch(err => console.error("加载歌词失败:", err));</script>
+</script>
 
 </body>
 </html>
+
