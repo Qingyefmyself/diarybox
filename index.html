@@ -349,6 +349,17 @@ const sections = document.querySelectorAll('section');
 
 let current = document.querySelector('section.active');
 
+const main = document.querySelector('main');
+
+function adjustMainHeight(section) {
+    main.style.height = section.offsetHeight + 'px';
+}
+
+// 页面首次加载时同步高度
+window.addEventListener('load', () => {
+    adjustMainHeight(current);
+});
+    
 links.forEach(link => {
     link.addEventListener('click', () => {
         if (link.classList.contains('active')) return;
@@ -364,6 +375,7 @@ links.forEach(link => {
             current.classList.remove('active', 'fade-out');
             next.classList.add('active');
             current = next;
+            adjustMainHeight(next); // ← 只加这一行
         }, 400);
     });
 });
@@ -424,6 +436,7 @@ fetch(`lyrics.json?t=${Date.now()}`)
 
 </body>
 </html>
+
 
 
 
