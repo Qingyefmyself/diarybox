@@ -382,7 +382,7 @@ const fallbackLyrics = [
 ];
 
 // 尝试 fetch JSON
-fetch('lyrics.json')
+fetch(`lyrics.json?t=${Date.now()}`)
     .then(res => res.json())
     .then(data => renderLyrics(data))
     .catch(err => {
@@ -394,4 +394,5 @@ fetch('lyrics.json')
 
 </body>
 </html>
+
 
