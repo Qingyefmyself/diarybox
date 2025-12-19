@@ -260,32 +260,36 @@ footer a {
 
 
 @media (max-width: 600px) {
+
     .lyrics-wrapper {
+        display: flex;          /* ⭐ 必须 */
         flex-direction: column; /* 上下排列 */
         gap: 20px;
     }
 
     .lyrics-list {
-        flex: 1 1 auto;
         display: flex;
-        overflow-x: auto; /* 横向滚动目录 */
+        overflow-x: auto;
         gap: 16px;
     }
 
     .lyrics-list li {
-        flex: 0 0 auto; /* 每个条目自适应内容宽度 */
+        flex: 0 0 auto;
     }
 
     .lyrics-content {
-        min-height: 150px;
+        width: 100%;
     }
 
-    .lyrics-content p {
-        max-width: 100%; /* 手机全屏显示 */
+    /* ⚠️ 注意这里选择器要对 */
+    .lyric p {
+        max-width: 100%;
+        white-space: normal;
         word-break: break-word;
+        overflow-wrap: break-word;
+        box-sizing: border-box;
     }
 }
-
     
 </style>
 </head>
@@ -427,6 +431,7 @@ fetch(`lyrics.json?t=${Date.now()}`)
 
 </body>
 </html>
+
 
 
 
