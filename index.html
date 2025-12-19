@@ -262,6 +262,8 @@ footer a {
         overflow-y: hidden;
         gap: 16px;
 
+        margin-bottom: 6px;   /* 压缩目录和歌词之间的距离 */
+    
         width: 100%;                /* 关键 2：明确宽度 */
         max-width: 100%;
         -webkit-overflow-scrolling: touch; /* 关键 3：微信顺滑滚动 */
@@ -422,6 +424,7 @@ fetch(`lyrics.json?t=${Date.now()}`)
 
 </body>
 </html>
+
 
 
 
