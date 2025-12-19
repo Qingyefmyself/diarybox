@@ -407,7 +407,7 @@ const fallbackPhilosophy = [
     { title:"写作的意义", date:"2025-12-18", content:"写作是整理思绪的过程，它不会让你成为完美的人，但会让你更理解自己。" }
 ];
 
-fetch(`/philosophy.json?t=${Date.now()}`)
+fetch(`./philosophy.json?t=${Date.now()}`)
   .then(res=>res.json())
   .then(data=>renderPhilosophy(data))
   .catch(err=>{
@@ -445,4 +445,5 @@ document.addEventListener('click', unlockAudio, {once:true});
 
 </body>
 </html>
+
 
