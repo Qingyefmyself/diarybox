@@ -129,8 +129,7 @@ nav a.active::after {
 main {
     padding: 60px 20px;
     min-height: 420px;
-    overflow-y: auto;
-    height: calc(100vh - 260px); /* 头部 + padding 的近似值 */
+
 }
 
 /* ===== 内容卡片 ===== */
@@ -345,16 +344,6 @@ const sections = document.querySelectorAll('section');
 
 let current = document.querySelector('section.active');
 
-const main = document.querySelector('main');
-
-function adjustMainHeight(section) {
-    main.style.height = section.offsetHeight + 'px';
-}
-
-// 页面首次加载时同步高度
-window.addEventListener('load', () => {
-    adjustMainHeight(current);
-});
     
 links.forEach(link => {
     link.addEventListener('click', () => {
@@ -371,7 +360,6 @@ links.forEach(link => {
             current.classList.remove('active', 'fade-out');
             next.classList.add('active');
             current = next;
-            adjustMainHeight(next); // ← 只加这一行
         }, 400);
     });
 });
@@ -432,6 +420,7 @@ fetch(`lyrics.json?t=${Date.now()}`)
 
 </body>
 </html>
+
 
 
 
