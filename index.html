@@ -254,6 +254,28 @@ footer a {
     color: #2f3d2f;
 }
 
+@media (max-width: 600px) {
+    .lyrics-wrapper {
+        grid-template-columns: 1fr; /* 左右合并成一列 */
+        gap: 20px;
+    }
+
+    .lyrics-list {
+        display: flex;
+        overflow-x: auto; /* 横向滚动目录 */
+        gap: 16px;
+    }
+
+    .lyrics-list li {
+        flex: 0 0 auto; /* 保证横向滚动每个条目宽度自适应 */
+    }
+
+    .lyrics-content {
+        min-height: 150px;
+    }
+}
+
+    
 </style>
 </head>
 
@@ -394,5 +416,6 @@ fetch(`lyrics.json?t=${Date.now()}`)
 
 </body>
 </html>
+
 
 
