@@ -217,39 +217,42 @@ footer a {
 }
 
 @media (max-width: 600px) {
-    /* 歌词容器改为纵向排列 */
+
     .lyrics-wrapper {
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 12px; /* 原来 20px，整体更紧凑 */
     }
 
-    /* 歌词目录横向滚动 */
     .lyrics-list {
         display: flex;
-        flex-wrap: nowrap;                 /* 强制单行 */
-        overflow-x: auto;                  /* 横向滚动 */
-        overflow-y: hidden;                /* 禁止纵向滚动 */
-        gap: 16px;
-        margin-bottom: 6px;                /* 压缩目录和歌词之间的距离 */
-        width: 100%;                        /* 明确宽度 */
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        gap: 14px;
+        margin-bottom: 0;   /* 关键：不额外留空 */
+        padding-bottom: 2px;
+        width: 100%;
         max-width: 100%;
-        -webkit-overflow-scrolling: touch; /* 微信顺滑滚动 */
+        -webkit-overflow-scrolling: touch;
     }
 
-    /* 歌词目录每一项固定，不允许被压缩 */
-    .lyrics-list li {
-        flex: 0 0 auto;   /* 不允许被压缩 */
-        white-space: nowrap; /* 一项显示一行，不换行 */
-    }
-
-    /* 歌词内容高度自适应 */
     .lyrics-content {
-        min-height: auto;
+        min-height: 0 !important; /* 🔥 关键 */
+        height: auto;
+        margin-top: 4px;          /* 控制目录与正文距离 */
     }
 
-    /* 歌词段落换行控制 */
+    .lyric {
+        display: none;
+    }
+
+    .lyric.active {
+        display: block;
+    }
+
     .lyric p {
+        margin-top: 0;
         max-width: 100%;
         word-break: break-word;
     }
@@ -485,5 +488,6 @@ document.addEventListener('click', unlockAudio, {once:true});
 
 </body>
 </html>
+
 
 
