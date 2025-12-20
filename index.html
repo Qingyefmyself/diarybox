@@ -257,6 +257,7 @@ footer a {
 
 
 
+
 /* ===== 哲学板块 ===== */
 .philosophy-item {
     margin-bottom: 28px;
@@ -444,8 +445,8 @@ function renderPhilosophy(data){
 }
 
 const fallbackPhilosophy = [
-    { title:"音乐与生活", date:"2025-12-19", content:"音乐不是为了证明什么，而是把一些说不出口的东西，暂时留在空气里。" },
-    { title:"写作的意义", date:"2025-12-18", content:"写作是整理思绪的过程，它不会让你成为完美的人，但会让你更理解自己。" }
+    { title:"打架", date:"2025-12-20", content:"我每天都任憑我的理性和我的身體作鬥爭————它們來回搖擺，勻亂我本就混沌的思緒。" },
+    { title:"寫", date:"2025-12-19", content:"我開始在這裏寫點什麽。萬一真的聽不到聲音了，總還有文字。" }
 ];
 
 fetch(`philosophy.json?t=${Date.now()}`)
@@ -486,6 +487,7 @@ document.addEventListener('click', unlockAudio, {once:true});
 
 </body>
 </html>
+
 
 
 
